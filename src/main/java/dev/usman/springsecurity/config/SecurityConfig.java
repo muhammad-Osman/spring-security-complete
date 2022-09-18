@@ -14,7 +14,7 @@ public class SecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
             throws Exception {
 
-        http.authorizeHttpRequests((auth) -> auth
+       /* http.authorizeHttpRequests((auth) -> auth
                 .antMatchers("/myAccount",
                         "/myBalance",
                         "/myLoans",
@@ -22,7 +22,25 @@ public class SecurityConfig {
                 .antMatchers("/notices",
                         "/contact").permitAll()
         ).httpBasic(Customizer.withDefaults());
-        return http.build();
+        return http.build();*/
+
+        // Deny All example
+//        http.authorizeRequests(
+//                auth ->
+//                        auth
+//                                .anyRequest()
+//                                .denyAll())
+//                .httpBasic(Customizer.withDefaults());
+//
+//        return http.build();
+
+        // permitAll all configuration
+        return http.authorizeRequests(
+                auth ->
+                        auth.anyRequest().permitAll()
+        ).httpBasic(Customizer.withDefaults())
+                .build();
+
     }
 
 
