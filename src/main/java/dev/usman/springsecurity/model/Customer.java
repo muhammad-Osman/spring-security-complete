@@ -1,61 +1,83 @@
 package dev.usman.springsecurity.model;
 
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "customer")
 public class Customer {
 
-    @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-    private Long id;
-    private String email;
-    private String password;
-    private String role;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "customer_id")
+	private int id;
+	private String name;
+	private String email;
+	@Column(name = "mobile_number")
+	private String mobileNumber;
+	@JsonIgnore
+	private String pwd;
+	private String role;
+	@Column(name = "create_dt")
+	private String createDt;
 
-    public Long getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getRole() {
-        return role;
-    }
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
-    }
+	public String getPwd() {
+		return pwd;
+	}
 
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getCreateDt() {
+		return createDt;
+	}
+
+	public void setCreateDt(String createDt) {
+		this.createDt = createDt;
+	}
 }

@@ -27,9 +27,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": [
-
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -94,9 +92,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": [
-
-            ]
+            "scripts": []
           }
         },
         "lint": {
@@ -125,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "elec-app-ui"
+    }
+  },
+  "defaultProject": "elec-app-ui",
+  "cli": {
+    "analytics": false
+  }
 }

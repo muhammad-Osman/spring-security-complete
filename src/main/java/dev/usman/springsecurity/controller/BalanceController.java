@@ -1,14 +1,30 @@
 package dev.usman.springsecurity.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import dev.usman.springsecurity.model.AccountTransactions;
+import dev.usman.springsecurity.model.Customer;
+import dev.usman.springsecurity.repository.AccountTransactionsRepository;
 
 @RestController
 public class BalanceController {
-	
-	@GetMapping("/myBalance")
-	public String getBalanceDetails(String input) {
-		return "Here are the balance details from the DB";
-	}
 
+	@Autowired
+	private AccountTransactionsRepository accountTransactionsRepository;
+	
+	@PostMapping("/myBalance")
+	public List<AccountTransactions> getBalanceDetails(@RequestBody Customer customer) {
+		List<AccountTransactions> accountTransactions = accountTransactionsRepository.
+				findByCustomerIdOrderByTransactionDtDesc(customer.getId());
+		if (accountTransactions != null ) {
+			return accountTransactions;
+		}else {
+			return null;
+		}
+	}
 }

@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import dev.usman.springsecurity.model.Customer;
+import dev.usman.springsecurity.model.Loans;
 
 @Repository
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
+public interface LoanRepository extends CrudRepository<Loans, Long> {
 	
-	List<Customer> findByEmail(String email);
+	List<Loans> findByCustomerIdOrderByStartDtDesc(int customerId);
 
 }
